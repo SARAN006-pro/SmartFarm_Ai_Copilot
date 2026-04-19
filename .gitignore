@@ -1,0 +1,39 @@
+# Environment
+.env.local
+.env.production
+backend/.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.egg
+
+# Data generated at runtime
+backend/database.db
+backend/rag_store/
+backend/saved/
+backend/uploads/
+backend/.data/
+backend/app/database.db
+backend/app/uploads/
+backend/app/ml/saved/
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# Build
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: smartfarm-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: MODEL_NAME
+        value: mistralai/mistral-7b-instruct
+      - key: DATA_DIR
+        value: /data
+    disk:
+      name: smartfarm-data
+      mountPath: /data
+      sizeGB: 1
