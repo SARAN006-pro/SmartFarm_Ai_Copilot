@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import { MessageSquare, Sprout, TrendingUp, FileSearch } from 'lucide-react'
-import logo from '../../image.png'
 
 const features = [
   {
@@ -33,7 +32,9 @@ export default function Landing() {
       <div className="absolute inset-0 pointer-events-none opacity-60 bg-[linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.4)_1px,transparent_1px)] bg-[size:72px_72px] dark:opacity-20" />
 
       <div className="relative flex flex-col items-center justify-center text-center px-6 pt-24 pb-16">
-        <img src={logo} alt="SmartFarm AI logo" className="w-20 h-20 rounded-3xl object-cover shadow-xl shadow-emerald-500/25 mb-6" />
+        <div className="w-20 h-20 rounded-3xl flex items-center justify-center bg-gradient-to-br from-emerald-500 to-emerald-700 shadow-xl shadow-emerald-500/25 mb-6">
+          <Sprout size={38} color="white" strokeWidth={2.2} />
+        </div>
 
         <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-200/70 dark:border-emerald-500/20 bg-white/80 dark:bg-slate-900/80 text-xs font-medium text-emerald-700 dark:text-emerald-300 mb-6 backdrop-blur">
           SmartFarm AI Copilot
