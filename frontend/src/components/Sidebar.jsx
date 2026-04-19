@@ -4,7 +4,6 @@ import {
   Settings, MapPin, TrendingUp, Calendar, Droplets,
   DollarSign, FolderOpen, Radio, ChevronRight,
 } from 'lucide-react'
-import logo from '../../image.png'
 
 const NAV_SECTIONS = [
   {
@@ -64,12 +63,7 @@ export default function Sidebar({ isOpen, onClose }) {
             boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)',
           }}
         >
-          <img
-            src={logo}
-            alt="SmartFarm AI"
-            className="w-full h-full rounded-2xl object-cover"
-            style={{ borderRadius: 'inherit' }}
-          />
+          <Sprout size={22} strokeWidth={2.2} style={{ color: 'white' }} />
         </div>
         <div className="flex-1 min-w-0">
           <p className="font-bold text-sm leading-none tracking-tight" style={{ color: 'var(--color-text)' }}>
