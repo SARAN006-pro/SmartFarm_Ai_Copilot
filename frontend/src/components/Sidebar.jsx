@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import {
   LayoutDashboard, MessageSquare, Sprout, BarChart3,
@@ -36,9 +37,24 @@ const NAV_SECTIONS = [
 ]
 
 export default function Sidebar({ isOpen, onClose }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 1024
+      setIsMobile(mobile)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const handleNavClick = () => {
-    if (window.innerWidth < 1024) onClose?.()
+    if (isMobile) onClose?.()
   }
+
+  // Always show sidebar on desktop (isMobile = false)
+  const visible = isMobile ? isOpen : true
+
   return (
     <aside
       className="fixed left-0 top-0 h-screen flex flex-col z-40 transition-transform duration-300"
@@ -47,7 +63,7 @@ export default function Sidebar({ isOpen, onClose }) {
         background: 'var(--color-surface)',
         borderRight: '1px solid var(--color-border)',
         boxShadow: 'var(--shadow-sm)',
-        transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+        transform: visible ? 'translateX(0)' : 'translateX(-100%)',
       }}
     >
       {/* Logo & Brand */}

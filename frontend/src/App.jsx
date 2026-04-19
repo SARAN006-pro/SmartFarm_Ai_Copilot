@@ -19,25 +19,19 @@ export const SIDEBAR_WIDTH = 260
 
 function AppLayout({ children }) {
   const { sidebarOpen, toggleSidebar } = useSidebar()
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 1024 : false
 
   return (
     <div className="app-shell">
       <Sidebar isOpen={sidebarOpen} onClose={toggleSidebar} />
       {/* Mobile overlay */}
-      {sidebarOpen && (
+      {sidebarOpen && isMobile && (
         <div
           className="sidebar-overlay"
           onClick={toggleSidebar}
         />
       )}
-      <main
-        className="app-main"
-        style={{
-          marginLeft: sidebarOpen ? 0 : 0,
-          paddingLeft: 0,
-          transition: 'margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        }}
-      >
+      <main className="app-main">
         {children}
       </main>
     </div>
