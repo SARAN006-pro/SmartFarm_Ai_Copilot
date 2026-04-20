@@ -21,7 +21,6 @@ async def chat_endpoint(request: ChatRequest):
 			session_id=session_id,
 			history=request.history,
 			language=language,
-			device_id=request.device_id,
 		)
 	except Exception as e:
 		raise HTTPException(status_code=500, detail=f"AI service error: {str(e)}") from e
