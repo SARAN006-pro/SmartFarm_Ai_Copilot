@@ -30,7 +30,6 @@ ENV PATH="/opt/venv/bin:$PATH" \
 
 COPY app ./app
 COPY requirements.txt .
-COPY pyproject.toml .
 
 RUN mkdir -p rag_store uploads saved ml_models
 

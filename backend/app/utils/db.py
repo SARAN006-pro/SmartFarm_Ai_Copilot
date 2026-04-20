@@ -105,5 +105,120 @@ def init_db():
         """
     )
 
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS sensor_readings (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            device_id TEXT,
+            webhook_token TEXT,
+            soil_moisture REAL,
+            temperature REAL,
+            humidity REAL,
+            rainfall REAL,
+            soil_ph REAL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS webhook_urls (
+            token TEXT PRIMARY KEY,
+            device_id TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS feedbacks (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            device_id TEXT,
+            message TEXT,
+            rating INTEGER,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS corrections (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            device_id TEXT,
+            original_reply TEXT,
+            corrected_reply TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS device_profiles (
+            device_id TEXT PRIMARY KEY,
+            preferences TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS user_context (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            device_id TEXT,
+            context_key TEXT,
+            context_value TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS crop_outcomes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            device_id TEXT,
+            crop_name TEXT,
+            area_hectares REAL,
+            fertilizer_kg REAL,
+            pesticide_kg REAL,
+            rainfall_mm REAL,
+            actual_yield REAL,
+            profit REAL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS crop_patterns (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            device_id TEXT,
+            crop_name TEXT,
+            pattern_json TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS calendar_data (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            crop_name TEXT,
+            location TEXT,
+            planting_month INTEGER,
+            harvest_month INTEGER,
+            status TEXT
+        )
+        """
+    )
+
     conn.commit()
     conn.close()

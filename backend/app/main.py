@@ -5,7 +5,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import chat, predict, farm, market, irrigation, sessions
+from app.api import chat, predict, farm, market, irrigation, sessions, rag, sensors, records, economics, settings, translation, feedback, profile, calendar
 from app.schemas.models import HealthResponse
 from app.utils.db import init_db
 
@@ -75,6 +75,15 @@ app.include_router(farm.router, prefix="/api", tags=["Farm"])
 app.include_router(market.router, prefix="/api", tags=["Market"])
 app.include_router(irrigation.router, prefix="/api", tags=["Irrigation"])
 app.include_router(sessions.router, prefix="/api", tags=["Sessions"])
+app.include_router(rag.router, prefix="/api", tags=["RAG"])
+app.include_router(sensors.router, prefix="/api", tags=["Sensors"])
+app.include_router(records.router, prefix="/api", tags=["Records"])
+app.include_router(economics.router, prefix="/api", tags=["Economics"])
+app.include_router(settings.router, prefix="/api", tags=["Settings"])
+app.include_router(translation.router, prefix="/api", tags=["Translation"])
+app.include_router(feedback.router, prefix="/api", tags=["Feedback"])
+app.include_router(profile.router, prefix="/api", tags=["Profile"])
+app.include_router(calendar.router, prefix="/api", tags=["Calendar"])
 
 
 @app.get("/", response_model=HealthResponse)
