@@ -1,13 +1,13 @@
 services:
   - type: web
     name: smartfarm-api
-    runtime: python
-    rootDir: backend
-    buildCommand: pip install --no-cache-dir setuptools wheel && pip install --no-cache-dir -r requirements.txt
-    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    runtime: docker
+    dockerfilePath: backend/Dockerfile
+    port: 8000
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
     envVars:
       - key: OPENROUTER_API_KEY
-        value: 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
+        value: sk-or-v1-ba629a0ccab9a26073873155ee6d4219b76d8aa1f5ed91908aa55d9
         sync: false
       - key: MODEL_NAME
         value: mistralai/mistral-7b-instruct
