@@ -1,4 +1,0 @@
-INFO:     Will watch for changes in these directories: ['C:\\Users\\saran\\Desktop\\smartfarm-ai\\backend']
-INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [25012] using WatchFiles
-^C^C
