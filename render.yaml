@@ -3,10 +3,11 @@ services:
     name: smartfarm-api
     runtime: python
     rootDir: backend
-    buildCommand: pip install -r backend/requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
-      - key: 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
+      - key: OPENROUTER_API_KEY
+        value: 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
         sync: false
       - key: MODEL_NAME
         value: mistralai/mistral-7b-instruct
